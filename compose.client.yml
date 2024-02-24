@@ -1,0 +1,10 @@
+---
+version: "3"
+
+services:
+  udp2tcp:
+    image: ghcr.io/mehdisadeghidev/udp-over-tcp:latest
+    restart: unless-stopped
+    ports:
+      - 51820:51820/udp
+    command: udp2tcp --udp-listen 0.0.0.0:51820 --tcp-forward 185.195.232.67:5001 --nodelay

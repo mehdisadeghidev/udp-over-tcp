@@ -1,0 +1,10 @@
+---
+version: "3"
+
+services:
+  tcp2udp:
+    image: ghcr.io/mehdisadeghidev/udp-over-tcp:latest
+    restart: unless-stopped
+    ports:
+      - 443:443/tcp
+    command: tcp2udp --statsd-host 127.0.0.1:8125 --tcp-listen 0.0.0.0:443 --udp-bind=127.0.0.1 --udp-forward 127.0.0.1:51820 --tcp-recv-timeout=130 --nodelay
